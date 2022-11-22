@@ -43,22 +43,72 @@ var confirmNumber = confirm("Inlcude Numbers?");
 var confirmSpecial = confirm("Include Special Characters?");
 
 let selected_arr;
+
 if (confirmUpper && confirmLower && confirmNumber && confirmSpecial){
- selected_arr = ["upperCaseArr", "lowerCaseArr", "numbersArr", "specialCharArr"]
+ selected_arr = [upperCaseArr, lowerCaseArr, numbersArr, specialCharArr]
 }
-if (confirmLower && confirmNumber && confirmSpecial){
-  selected_arr = ["lowerCaseArr", "numbersArr", "specialCharArr"]
- }
- if (confirmNumber && confirmSpecial){
-  selected_arr = ["numbersArr", "specialCharArr"]
- }
- if (confirmSpecial){
-  selected_arr = ["specialCharArr"]
+
+if (!confirmUpper && confirmLower && confirmNumber && confirmSpecial){
+  selected_arr = [lowerCaseArr, numbersArr, specialCharArr]
  }
 
+ if (confirmUpper && !confirmLower && confirmNumber && confirmSpecial){
+  selected_arr = [upperCaseArr, numbersArr, specialCharArr]
+ }
+
+ if (confirmUpper && confirmLower && !confirmNumber && confirmSpecial){
+  selected_arr = [upperCaseArr, lowerCaseArr, specialCharArr]
+ }
+
+ if (confirmUpper && confirmLower && confirmNumber && !confirmSpecial){
+  selected_arr = [upperCaseArr, lowerCaseArr, numbersArr]
+ }
+
+ if (!confirmUpper && !confirmLower && confirmNumber && confirmSpecial){
+  selected_arr = [numbersArr, specialCharArr]
+ }
+
+ if (!confirmUpper && confirmLower && !confirmNumber && confirmSpecial){
+  selected_arr = [lowerCaseArr, specialCharArr]
+ }
+
+ if (!confirmUpper && confirmLower && confirmNumber && !confirmSpecial){
+  selected_arr = [lowerCaseArr, numbersArr]
+ }
+
+ if (confirmUpper && !confirmLower && !confirmNumber && confirmSpecial){
+  selected_arr = [upperCaseArr, specialCharArr]
+ }
+
+ if (confirmUpper && !confirmLower && confirmNumber && !confirmSpecial){
+  selected_arr = [upperCaseArr, numbersArr]
+ }
+
+ if (confirmUpper && confirmLower && !confirmNumber && !confirmSpecial){
+  selected_arr = [upperCaseArr, lowerCaseArr]
+ }
+
+ if (!confirmUpper && !confirmLower && !confirmNumber && confirmSpecial){
+  selected_arr = [specialCharArr]
+ }
+
+ if (confirmUpper && !confirmLower && !confirmNumber && !confirmSpecial){
+  selected_arr = [upperCaseArr]
+ }
+  
+ if (!confirmUpper && confirmLower && !confirmNumber && !confirmSpecial){
+    selected_arr = [lowerCaseArr]
+  }
+
+  if (!confirmUpper && !confirmLower && confirmNumber && !confirmSpecial){
+    selected_arr = [numbersArr]
+   }
+   
+
 for (var i = 0; i < lengthpassword; i++) {
-  var array_select = selected_arr[Math.floor(Math.random()*selected_arr.length)]
-   var Newcharacter = array_select[Math.floor(Math.random() * array_select.length)] 
+  var array_select = selected_arr[Math.floor(Math.random()* selected_arr.length)]
+   var Newcharacter = array_select[Math.floor(Math.random() * array_select.length)]
+
 
   Password += Newcharacter;
 }
