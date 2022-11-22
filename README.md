@@ -1,11 +1,11 @@
 # Password Generator Starter Code
 
 
-##Description
+## Description
 
 For this assignment I used the started code given to us  to build a password generator. 
 
-##Usage
+## Usage
 
 First the user is aksed to specify a length anywhere between 8 and 128 characters.
 next the user is asked to confirm the inclusion of 4 different character sets:
