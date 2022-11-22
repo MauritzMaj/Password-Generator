@@ -2,76 +2,70 @@
 
 //define character sets
 var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var lowerCaseArr = lowerCase.split("")
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var upperCaseArr = upperCase.split("")
 var numbers = "0123456789";
+var numbersArr = numbers.split("")
 var specialChar = "~`!@#$%^&*+<?/;:(=)|{";
+var specialCharArr = specialChar.split("")
 
 
 //prompt for password length
 var passwordLength = function() {
-  var length = prompt ("How long would you like your password to be? Please enter a number between 8 and 128");
+  var length = Number(prompt ("How long would you like your password to be? Please enter a number between 8 and 128"));
   if (length < 8 || length > 128 || length === "") {
     alert("Invalid length. Must be between 8 and 128 characters long.")
-  } else return passwordLength;
-
-  lengthPass = Math.floor(Number(length));
+  return } 
 
   //This will send data from this function to layout function!
-  return lengthPass;
+ return length;
 }
 
   
-  //Function to determine Character sets
-  var charInclusions = function() {
-    var passwordInclusions = "";
-
-
-//Prompt to include types of characters and validate
-
-  var confirmLower = confirm("Include Lower Case Characters?");
-
-  var confirmUpper = confirm("Include Upper Case Characters");
-
-  var confirmNumber = confirm("Inlcude Numbers?");
-
-  var confirmSpecial = confirm("Include Special Characters?");
-
-
-  if (confirmLower == true) {
-    passwordInclusions += lowerCase;
-  }
-  if (confirmUpper == true) {
-    passwordInclusions += upperCase;
-  }
-  if (confirmSpecial == true) {
-    passwordInclusions += specialChar;
-  }
-  if (confirmNumber == true) {
-    passwordInclusions += numbers;
-
-  } 
-
-  //return results
-  return passwordInclusions;
-}
 
 //create generate password function
 var generatePassword = function () {
 
-//call global var to output at the end
-Password = "";
+  var Password = ""
+
 
 //function to determine length
 var lengthpassword = passwordLength();
 
-//funtion to determine which characters to include
-var passwordInclusions = charInclusions ();
+//determine which characters to include
+var confirmLower = confirm("Include Lower Case Characters?");
+
+var confirmUpper = confirm("Include Upper Case Characters");
+
+var confirmNumber = confirm("Inlcude Numbers?");
+
+var confirmSpecial = confirm("Include Special Characters?");
+
+let selected_arr;
+if (confirmUpper && confirmLower && confirmNumber && confirmSpecial){
+ selected_arr = ["upperCaseArr", "lowerCaseArr", "numbersArr", "specialCharArr"]
+}
+if (confirmLower && confirmNumber && confirmSpecial){
+  selected_arr = ["lowerCaseArr", "numbersArr", "specialCharArr"]
+ }
+ if (confirmNumber && confirmSpecial){
+  selected_arr = ["numbersArr", "specialCharArr"]
+ }
+ if (confirmSpecial){
+  selected_arr = ["specialCharArr"]
+ }
 
 for (var i = 0; i < lengthpassword; i++) {
-  Password += passwordInclusions.charAt(Math.floor(Math.random() * passwordInclusions.length));
+  var array_select = selected_arr[Math.floor(Math.random()*selected_arr.length)]
+   var Newcharacter = array_select[Math.floor(Math.random() * array_select.length)] 
+
+  Password += Newcharacter;
 }
 
+
 return Password;
+
 }
 
 // Get references to the #generate element
